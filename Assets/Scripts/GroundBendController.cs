@@ -5,6 +5,7 @@ public class GroundBendController : MonoBehaviour
 {
     [SerializeField] private Material groundMaterial;
     [SerializeField] private Slider bendSlider;
+    [SerializeField] private BendVisualOffset playerBend;
 
     private static readonly int BendStrengthID =
         Shader.PropertyToID("_BendStrength");
@@ -18,6 +19,7 @@ public class GroundBendController : MonoBehaviour
     void OnSliderChanged(float value)
     {
         groundMaterial.SetFloat(BendStrengthID, value);
+        if (playerBend != null) playerBend.SetBendStrength(value);
     }
 }
 
